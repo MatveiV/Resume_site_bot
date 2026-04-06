@@ -1,0 +1,23 @@
+PROJECTS (https://github.com/MatveiV)
+- MultiTools AI Agent Bot: Telegram bot, 5 providers, 8 roles, image/video generation, dialog memory, RUB cost tracking. 
+- ShortLongMemory Bots: short (deque) + long (RAG + ChromaDB) memory, FSM configurator.
+- Local AI Agent Bot: CLI + Telegram, function calling, 11 tools (search, weather, crypto, QR, PDF/DOCX, HTTP, terminal).
+- Product MCP Bot: MCP server (FastAPI) + Telegram bot, 10 tools: SQLite catalog, CoinGecko, RAWG, LibreTranslate.
+- AI Client PDF Generator: PDF reports from client dialog transcriptions. CLI + Telegram bot. LLM extracts JSON; Jinja2 + WeasyPrint produces 3 report types (basic, project, design) with AI-generated UI mockup. Docs: C4, BPMN, UML, Sequence.
+- LangChain Pipeline Generator: auto-generates Telegram bots and SRS/URS docs from text via LLM chains.
+- Prompter: CLI for A/B testing prompt techniques (zero-shot, few-shot, CoT, role-based) with DOCX output.
+- ML_Fin_Notebooks: strategy backtesting, feature engineering (EMA, RSI, MACD), time-series forecasting.
+KEY ACHIEVEMENTS
+- Unified architecture for 5 LLM providers — no code changes when switching.
+- Transcript to PDF pipeline with 3 report types; base64 image embedding for cross-platform rendering.
+- Telegram bot resilient to TimedOut/BadRequest via safe_answer and global error_handler.
+- Dual UI (CLI + Telegram) on a single core — zero code duplication.
+- Loki + Grafana logging stack from scratch with automated Ubuntu deploy scripts.
+TECH STACK
+PLs: Python 3.10+, SQL, Bash.
+AI/LLM: OpenAI, Claude, Gemini, DeepSeek, GLM, Llama, Qwen; MCP.
+Frameworks: FastAPI, aiogram 3, python-telegram-bot, LangChain, Jinja2, WeasyPrint, ChromaDB, Pydantic.
+Data: SQLite, PostgreSQL, pandas, openpyxl, yfinance.
+ML: scikit-learn, LightGBM, PyTorch, optuna, backtesting.
+Infra: Docker, GitHub Actions, Grafana Loki.
+Tools: Jupyter, LM Studio, Ollama, Cursor, Kiro.

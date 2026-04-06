@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+from datetime import datetime
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart, Command
 from aiogram.types import (
@@ -45,31 +46,48 @@ TEXTS = {
         "experience": (
             "💼 <b>Опыт работы</b>\n\n"
             "▸ <b>07.2024 — н.в.</b> · ИП · Системный и бизнес-аналитик, Vibe-Developer\n"
-            "  AI-архитектуры, RAG, MCP, Go REST API, Docker\n\n"
+            "  Проектирование мультипровайдерной AI-архитектуры, FSM-конфигураторы, RAG-пайплайны, "
+            "рефакторинг Python, REST API на Go, multi-stage Docker, архитектурная документация.\n"
+            "  Разработка и бэктестинг алгоритмических стратегий (ML_Fin_Notebooks).\n"
+            "  Создание MVP-приложений: Telegram-боты, парсеры, генераторы PDF, сайт-резюме.\n"
+            "  <b>Достижения:</b> единая OpenAI-совместимая архитектура для 5 провайдеров; "
+            "AI-агент с 11 инструментами и двумя UI (CLI + Telegram) без дублирования кода; "
+            "порт Flask→Go: ×20 RPS при образе 10 МБ vs 150 МБ.\n\n"
             "▸ <b>04.2025 — 11.2025</b> · Techcoredev.ru · Системный аналитик\n"
-            "  Система управления страховыми продуктами\n\n"
+            "  Система управления страховыми продуктами. Полный цикл спецификаций, BPMN/ERD/UML/C4, "
+            "реверс-инжиниринг legacy с AI.\n"
+            "  <b>Достижение:</b> ускорил этап проектирования за счёт AI-генерации типовых фрагментов документации.\n\n"
             "▸ <b>04.2021 — 03.2024</b> · Raccoonsoft & Devexperts · Ведущий аналитик\n"
-            "  Tastyworks iPad (tastytrade.com)\n\n"
+            "  Tastyworks iPad (tastytrade.com) — акции, деривативы, форекс, крипто.\n"
+            "  Выявление требований, user stories, UI/UX, реверс-инжиниринг мобильного/толстого/тонкого клиентов.\n"
+            "  <b>Достижение:</b> успешный вывод продукта на рынок; сокращение итераций за счёт детальных требований в Jira.\n\n"
             "▸ <b>12.2013 — 04.2025</b> · ЛАНИТ-ТЕРКОМ · Ведущий аналитик\n"
-            "  ЖКХ, МЭШ, Газпром нефть, ЕМИАС, Toyota, AREA9\n\n"
+            "  ЖКХ ВЦКП-ЕИРЦ, МЭШ ДИТ Москвы, Газпром нефть (ВЕГА ФЭМ, Цифровой двойник), "
+            "ЕМИАС (Раковый регистр), Toyota, AREA9, presale-оценки.\n\n"
             "▸ <b>08.2007 — 05.2012</b> · Devexperts.com · Финансовый аналитик\n"
-            "  ThinkOrSwim, DXtrade, FIX-интеграции\n\n"
+            "  ThinkOrSwim, GFT Dealbook 360, DXtrade — FIX-интеграции, риск-менеджмент, бэк-офис.\n\n"
             "▸ <b>05.2012 — 03.2013</b> · TKB BNP Paribas · Старший аналитик\n"
-            "  VaR, CAPM, Model portfolio, Data Quality\n\n"
+            "  VaR, CAPM, Model portfolio, Data Quality, Data Mining.\n\n"
             "▸ <b>05.2013 — 12.2013</b> · Deutsche Telekom IT Solutions · Старший BA\n"
-            "  De-mail — нотариальный E-mail\n\n"
+            "  De-mail — нотариальный E-mail. SRS + модели процессов → успешное предварительное проектирование.\n\n"
             "▸ <b>02.2006 — 08.2007</b> · Visual Trading Systems · Бизнес-аналитик\n"
-            "  VT Trader, Backtesting Engine"
+            "  VT Trader (Capital Market Services FX), Backtesting Engine."
         ),
         "skills": (
             "🛠 <b>Технологии</b>\n\n"
-            "<b>Языки:</b> Python 3.10+, Go 1.22, SQL, Bash, MQL\n\n"
-            "<b>AI / LLM:</b> OpenAI API, Claude, Gemini, DeepSeek, LangChain, RAG, MCP, Function Calling\n\n"
-            "<b>Фреймворки:</b> FastAPI, Flask, aiogram 3, ChromaDB, Pydantic, WeasyPrint\n\n"
-            "<b>Данные:</b> PostgreSQL, SQLite, Oracle, MS SQL, pandas\n\n"
-            "<b>ML:</b> scikit-learn, LightGBM, PyTorch, LSTM, optuna\n\n"
+            "<b>Языки:</b> Python 3.10+, Go 1.22, SQL, Java, Bash, MQL, TeX\n\n"
+            "<b>AI / LLM:</b> OpenAI API, Claude, Gemini, DeepSeek, GLM (Z.AI), Llama, Qwen, Kimi; "
+            "function calling, tool calling, MCP, промпт-инжиниринг; LangChain, RAG, ChromaDB\n\n"
+            "<b>Генерация медиа:</b> DALL·E 2/3, GPT-Image-1, FLUX.1, Kling, Sora, Veo 3, Imagen 4\n\n"
+            "<b>Фреймворки:</b> FastAPI, Flask, aiogram 3, pyTelegramBotAPI, python-telegram-bot, "
+            "Pydantic, Jinja2, WeasyPrint, aiohttp\n\n"
+            "<b>Данные:</b> PostgreSQL, SQLite, Oracle, MS SQL Server, 1С, pandas, openpyxl, yfinance\n\n"
+            "<b>ML:</b> scikit-learn, LightGBM, PyTorch Lightning, pytorch-forecasting, LSTM, TFT, optuna, shap\n\n"
             "<b>Инфраструктура:</b> Docker, Docker Compose, Grafana Loki, GitHub Actions\n\n"
-            "<b>BA/SA:</b> Confluence, JIRA, BPMN, UML, C4, PlantUML, Figma"
+            "<b>BA/SA:</b> Confluence, JIRA, BPMN, UML, C4, PlantUML, Draw.io, Figma, Miro, "
+            "Enterprise Architect, ARIS, Bizagi, PowerDesigner, Postman\n\n"
+            "<b>Торговые платформы:</b> Tastytrade, MetaTrader 4/5, DealBook 360, ThinkOrSwim, VT Trader, QUIK\n\n"
+            "<b>Стандарты:</b> PMBoK, BABOK, ГОСТ 34, IEEE 830, ISO/IEC/IEEE 29148"
         ),
         "education": (
             "🎓 <b>Образование</b>\n\n"
@@ -105,10 +123,12 @@ TEXTS = {
         ),
         "about": (
             "👤 <b>Matvei Evgenyevich Vasetsov</b>\n\n"
-            "Analyst with 19 years of experience in FinTech. I specialise in translating business requirements "
-            "into architectural decisions and MVPs, and in designing high-load systems.\n\n"
-            "💡 <i>I bridge the business↔engineering gap: gather requirements, design architecture, "
-            "and automate routine work in Python — saving you iterations and money.</i>\n\n"
+            "Analyst with 19 years of experience in FinTech. Specialising in translating business requirements "
+            "into architectural decisions and MVPs, designing high-load systems — trading platforms and settlement engines. "
+            "Focused on measurable business outcomes through deep analysis and effective communication between business and engineering.\n\n"
+            "💡 <i>Developers building the wrong thing and no analyst in sight? I bridge the business↔engineering gap: "
+            "gather requirements, design architecture, and automate routine work in Python — "
+            "saving you iterations and money.</i>\n\n"
             "📧 <a href='mailto:matvey_v@yahoo.com'>matvey_v@yahoo.com</a>  <i>(Yahoo)</i>\n"
             "✈️ <a href='https://t.me/matveivasetsov'>@matveivasetsov</a>  <i>(Telegram)</i>\n"
             "🐙 <a href='https://github.com/MatveiV'>github.com/MatveiV</a>  <i>(GitHub)</i>\n"
@@ -118,31 +138,49 @@ TEXTS = {
         "experience": (
             "💼 <b>Work Experience</b>\n\n"
             "▸ <b>Jul 2024 — present</b> · Self-employed · Systems & Business Analyst, Vibe-Developer\n"
-            "  AI architectures, RAG, MCP, Go REST API, Docker\n\n"
+            "  Multi-provider AI architecture design, FSM configurators, RAG pipelines, Python refactoring, "
+            "Go REST API, multi-stage Docker, architectural documentation.\n"
+            "  Research, development and backtesting of algorithmic trading strategies (ML_Fin_Notebooks).\n"
+            "  Built MVP apps: Telegram bots, parsers, PDF generators, resume website.\n"
+            "  <b>Key achievements:</b> unified OpenAI-compatible architecture for 5 providers; "
+            "AI agent with 11 tools and dual UI (CLI + Telegram) — zero code duplication; "
+            "Flask→Go port: ×20 RPS at 10 MB image vs 150 MB; "
+            "transcript-to-PDF pipeline with 3 report types and base64 image embedding.\n\n"
             "▸ <b>Apr 2025 — Nov 2025</b> · Techcoredev.ru · Systems Analyst\n"
-            "  Insurance product management system\n\n"
+            "  Insurance product management system. Full specification lifecycle, BPMN/ERD/UML/C4, "
+            "AI-assisted legacy reverse engineering.\n"
+            "  <b>Achievement:</b> accelerated design phase by introducing AI for standard documentation fragments.\n\n"
             "▸ <b>Apr 2021 — Mar 2024</b> · Raccoonsoft & Devexperts · Lead Analyst\n"
-            "  Tastyworks iPad (tastytrade.com)\n\n"
+            "  Tastyworks iPad (tastytrade.com) — stocks, derivatives, FX, crypto.\n"
+            "  Requirements elicitation, user stories, UI/UX, reverse engineering of mobile/thick/thin clients.\n"
+            "  <b>Achievement:</b> successful product launch; reduced iterations via detailed Jira requirements.\n\n"
             "▸ <b>Dec 2013 — Apr 2025</b> · LANIT-TERCOM · Lead Analyst\n"
-            "  Housing utilities, Moscow Electronic School, Gazprom Neft, EMIAS, Toyota, AREA9\n\n"
+            "  Housing utilities VCKP-EIRC, Moscow Electronic School, Gazprom Neft (VEGA FEM, Digital Twin), "
+            "EMIAS (Cancer Registry), Toyota, AREA9, presale assessments.\n\n"
             "▸ <b>Aug 2007 — May 2012</b> · Devexperts.com · Financial Analyst\n"
-            "  ThinkOrSwim, DXtrade, FIX integrations\n\n"
+            "  ThinkOrSwim, GFT Dealbook 360, DXtrade — FIX integrations, risk management, back office.\n\n"
             "▸ <b>May 2012 — Mar 2013</b> · TKB BNP Paribas · Senior Analyst\n"
-            "  VaR, CAPM, Model portfolio, Data Quality\n\n"
+            "  VaR, CAPM, Model portfolio, Data Quality, Data Mining.\n\n"
             "▸ <b>May 2013 — Dec 2013</b> · Deutsche Telekom IT Solutions · Senior BA\n"
-            "  De-mail — notarial e-mail service\n\n"
+            "  De-mail — notarial e-mail. SRS + process models → successful preliminary design review.\n\n"
             "▸ <b>Feb 2006 — Aug 2007</b> · Visual Trading Systems · Business Analyst\n"
-            "  VT Trader, Backtesting Engine"
+            "  VT Trader (Capital Market Services FX), Backtesting Engine."
         ),
         "skills": (
             "🛠 <b>Tech Stack</b>\n\n"
-            "<b>Languages:</b> Python 3.10+, Go 1.22, SQL, Bash, MQL\n\n"
-            "<b>AI / LLM:</b> OpenAI API, Claude, Gemini, DeepSeek, LangChain, RAG, MCP, Function Calling\n\n"
-            "<b>Frameworks:</b> FastAPI, Flask, aiogram 3, ChromaDB, Pydantic, WeasyPrint\n\n"
-            "<b>Data:</b> PostgreSQL, SQLite, Oracle, MS SQL, pandas\n\n"
-            "<b>ML:</b> scikit-learn, LightGBM, PyTorch, LSTM, optuna\n\n"
+            "<b>Languages:</b> Python 3.10+, Go 1.22, SQL, Java, Bash, MQL, TeX\n\n"
+            "<b>AI / LLM:</b> OpenAI API, Claude, Gemini, DeepSeek, GLM (Z.AI), Llama, Qwen, Kimi; "
+            "function calling, tool calling, MCP, prompt engineering; LangChain, RAG, ChromaDB\n\n"
+            "<b>Media generation:</b> DALL·E 2/3, GPT-Image-1, FLUX.1, Kling, Sora, Veo 3, Imagen 4\n\n"
+            "<b>Frameworks:</b> FastAPI, Flask, aiogram 3, pyTelegramBotAPI, python-telegram-bot, "
+            "Pydantic, Jinja2, WeasyPrint, aiohttp\n\n"
+            "<b>Data:</b> PostgreSQL, SQLite, Oracle, MS SQL Server, 1C, pandas, openpyxl, yfinance\n\n"
+            "<b>ML:</b> scikit-learn, LightGBM, PyTorch Lightning, pytorch-forecasting, LSTM, TFT, optuna, shap\n\n"
             "<b>Infrastructure:</b> Docker, Docker Compose, Grafana Loki, GitHub Actions\n\n"
-            "<b>BA/SA:</b> Confluence, JIRA, BPMN, UML, C4, PlantUML, Figma"
+            "<b>BA/SA:</b> Confluence, JIRA, BPMN, UML, C4, PlantUML, Draw.io, Figma, Miro, "
+            "Enterprise Architect, ARIS, Bizagi, PowerDesigner, Postman\n\n"
+            "<b>Trading platforms:</b> Tastytrade, MetaTrader 4/5, DealBook 360, ThinkOrSwim, VT Trader, QUIK\n\n"
+            "<b>Standards:</b> PMBoK, BABOK, GOST 34, IEEE 830, ISO/IEC/IEEE 29148"
         ),
         "education": (
             "🎓 <b>Education</b>\n\n"
@@ -235,13 +273,14 @@ def format_projects(projects: list, category: str, lang: str) -> str:
 
 
 def get_cv_file(uid: int) -> tuple[str, str]:
-    """Returns (filepath, filename) for current user language."""
+    """Returns (filepath, filename) for current user language with timestamp."""
     lang = get_lang(uid)
     path = CV_FILES.get(lang, CV_FILES["ru"])
     if not os.path.exists(path):
         path = CV_FALLBACK
     suffix = "RU" if lang == "ru" else "EN"
-    return path, f"MatveiVasetsov_CV_{suffix}.pdf"
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return path, f"MatveiVasetsov_CV_{suffix}_{ts}.pdf"
 
 
 @dp.message(CommandStart())

@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 from flask import Flask, render_template, jsonify, send_file, abort, request
 
 app = Flask(__name__)
@@ -36,7 +37,7 @@ def download_cv():
         cv_path = CV_FALLBACK
     if not os.path.exists(cv_path):
         abort(404)
-    filename = f"MatveiVasetsov_CV_{'RU' if lang == 'ru' else 'EN'}.pdf"
+    filename = f"MatveiVasetsov_CV_{'RU' if lang == 'ru' else 'EN'}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
     return send_file(cv_path, as_attachment=True, download_name=filename, mimetype="application/pdf")
 
 
