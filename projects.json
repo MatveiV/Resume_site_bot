@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title_ru": "MultiTools AI Agent Bot",
+    "title_en": "MultiTools AI Agent Bot",
+    "desc_ru": "Telegram-бот с 5 AI-провайдерами, 8 ролями, генерацией изображений/видео, памятью диалога и подсчётом стоимости в рублях. Документация: 8 Mermaid-диаграмм (C4, BPMN, UML).",
+    "desc_en": "Telegram bot with 5 AI providers, 8 roles, image/video generation, dialogue memory, and cost tracking in RUB. Docs: 8 Mermaid diagrams (C4, BPMN, UML).",
+    "tags": ["Python", "aiogram", "LLM", "OpenAI", "Claude", "Gemini"],
+    "category": "AI / LLM",
+    "url": "https://github.com/MatveiV"
+  },
+  {
+    "id": 2,
+    "title_ru": "ShortLongMemory Bots",
+    "title_en": "ShortLongMemory Bots",
+    "desc_ru": "Telegram-боты с короткой (deque) и долгой (RAG + ChromaDB) памятью. FSM-конфигуратор, 3 AI-провайдера, 16+ моделей.",
+    "desc_en": "Telegram bots with short-term (deque) and long-term (RAG + ChromaDB) memory. FSM configurator, 3 AI providers, 16+ models.",
+    "tags": ["Python", "RAG", "ChromaDB", "FSM", "aiogram"],
+    "category": "AI / LLM",
+    "url": "https://github.com/MatveiV"
+  },
+  {
+    "id": 3,
+    "title_ru": "Local AI Agent Bot",
+    "title_en": "Local AI Agent Bot",
+    "desc_ru": "CLI и Telegram AI-агент с OpenAI function calling и 11 инструментами (поиск, погода, крипта, QR, PDF/DOCX, HTTP, терминал). 3 провайдера, 13+ моделей.",
+    "desc_en": "CLI and Telegram AI agent with OpenAI function calling and 11 tools (search, weather, crypto, QR, PDF/DOCX, HTTP, terminal). 3 providers, 13+ models.",
+    "tags": ["Python", "Function Calling", "CLI", "Telegram", "OpenAI"],
+    "category": "AI / LLM",
+    "url": "https://github.com/MatveiV"
+  },
+  {
+    "id": 4,
+    "title_ru": "Product MCP Bot",
+    "title_en": "Product MCP Bot",
+    "desc_ru": "MCP-сервер (FastAPI) + Telegram-бот с LLM tool calling. 10 инструментов: каталог товаров (SQLite), калькулятор, CoinGecko, RAWG, LibreTranslate.",
+    "desc_en": "MCP server (FastAPI) + Telegram bot with LLM tool calling. 10 tools: product catalogue (SQLite), calculator, CoinGecko, RAWG, LibreTranslate.",
+    "tags": ["FastAPI", "MCP", "SQLite", "LLM", "Python"],
+    "category": "AI / LLM",
+    "url": "https://github.com/MatveiV"
+  },
+  {
+    "id": 5,
+    "title_ru": "AI Client PDF Generator",
+    "title_en": "AI Client PDF Generator",
+    "desc_ru": "Система автогенерации PDF-отчётов по транскрибациям диалогов с клиентами. LLM → структурированный JSON → Jinja2 → WeasyPrint. 5 LLM-провайдеров.",
+    "desc_en": "Automated PDF report generation from client dialogue transcriptions. LLM → structured JSON → Jinja2 → WeasyPrint. 5 LLM providers, 4 image-generation backends.",
+    "tags": ["Python", "WeasyPrint", "Jinja2", "LLM", "PDF"],
+    "category": "AI / LLM",
+    "url": "https://github.com/MatveiV"
+  },
+  {
+    "id": 6,
+    "title_ru": "LangChain Pipeline Generator",
+    "title_en": "LangChain Pipeline Generator",
+    "desc_ru": "Автогенерация Telegram-ботов и документации (SRS, URS) по текстовому описанию через LLM-цепочки.",
+    "desc_en": "Auto-generation of Telegram bots and documentation (SRS, URS) from a text description via LLM chains.",
+    "tags": ["LangChain", "Python", "LLM", "Code Generation"],
+    "category": "AI / LLM",
+    "url": "https://github.com/MatveiV"
+  },
+  {
+    "id": 7,
+    "title_ru": "Refactoring_MV",
+    "title_en": "Refactoring_MV",
+    "desc_ru": "Рефакторинг Python-кода (SQL-инъекции, утечки соединений, гонки потоков) с параллельной реализацией REST API на Go. Два Docker-образа, docker-compose. 7 Mermaid-диаграмм.",
+    "desc_en": "Python code refactoring (SQL injections, connection leaks, race conditions) with a parallel Go REST API. Two Docker images, docker-compose. 7 Mermaid diagrams.",
+    "tags": ["Python", "Go", "Docker", "REST API", "Security"],
+    "category": "Infrastructure",
+    "url": "https://github.com/MatveiV/Refactoring_mv"
+  },
+  {
+    "id": 8,
+    "title_ru": "Loki-Grafana Stack",
+    "title_en": "Loki-Grafana Stack",
+    "desc_ru": "Стек централизованного логирования (Loki + Grafana) с Docker Compose и bash-скриптами автоустановки.",
+    "desc_en": "Centralised logging stack (Loki + Grafana) with Docker Compose and automated bash install scripts.",
+    "tags": ["Docker", "Grafana", "Loki", "DevOps", "Bash"],
+    "category": "Infrastructure",
+    "url": "https://github.com/MatveiV"
+  },
+  {
+    "id": 9,
+    "title_ru": "CoinParser",
+    "title_en": "CoinParser",
+    "desc_ru": "Парсер Telegram-канала с фильтрацией крипто-символов, интеграцией Google Sheets API и экспортом в XLSX.",
+    "desc_en": "Telegram channel parser with crypto-symbol filtering, Google Sheets API integration, and XLSX export.",
+    "tags": ["Python", "Telegram", "Google Sheets", "Crypto", "Parser"],
+    "category": "Infrastructure",
+    "url": "https://github.com/MatveiV"
+  },
+  {
+    "id": 10,
+    "title_ru": "ML_Fin_Notebooks",
+    "title_en": "ML_Fin_Notebooks",
+    "desc_ru": "ML в финансах: бэктестинг стратегий, генерация признаков (EMA, RSI, MACD), классификация, прогнозирование временных рядов (LSTM, TFT).",
+    "desc_en": "ML in finance: strategy backtesting, feature engineering (EMA, RSI, MACD), classification, time-series forecasting (LSTM, TFT).",
+    "tags": ["Python", "PyTorch", "LSTM", "scikit-learn", "Finance"],
+    "category": "ML / Finance",
+    "url": "https://github.com/MatveiV/ML_Fin_Notebooks"
+  }
+]

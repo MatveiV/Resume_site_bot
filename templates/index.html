@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="page_title">Матвей Васецов — Аналитик</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">MV</span>
+      <div class="nav-links">
+        <a href="#about" data-i18n="nav_about">Обо мне</a>
+        <a href="#projects" data-i18n="nav_projects">Проекты</a>
+        <a href="#experience" data-i18n="nav_experience">Опыт</a>
+        <a href="#skills" data-i18n="nav_skills">Стек</a>
+        <a href="#contact" data-i18n="nav_contact">Контакты</a>
+      </div>
+      <div class="nav-actions">
+        <button class="lang-btn" id="langToggle">EN</button>
+        <a href="/download-cv" class="btn-pill" data-i18n="nav_cv">Скачать CV</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-inner">
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">Системный и бизнес-аналитик · Vibe-кодер · К.ф.-м.н.</p>
+      <h1 class="hero-name">Матвей<br>Васецов</h1>
+      <p class="hero-tagline" data-i18n="hero_tagline">
+        19 лет в FinTech + Python + LLM-инструменты →<br>MVP, который не нужно переписывать после первого релиза.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary" data-i18n="hero_cta_projects">Смотреть проекты</a>
+        <a href="/download-cv" class="btn-secondary" data-i18n="hero_cta_cv">Скачать резюме</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UTP CARDS -->
+  <section class="utp">
+    <div class="container">
+      <div class="utp-grid">
+        <div class="utp-card">
+          <div class="utp-icon">🎯</div>
+          <h3 data-i18n="utp1_title">Бизнес ↔ Разработка</h3>
+          <p data-i18n="utp1_desc">Закрываю связку: собираю требования, проектирую архитектуру и автоматизирую рутину на Python — вы экономите итерации и деньги.</p>
+        </div>
+        <div class="utp-card">
+          <div class="utp-icon">⚡</div>
+          <h3 data-i18n="utp2_title">FinTech-экспертиза</h3>
+          <p data-i18n="utp2_desc">Торговые платформы, расчётные системы, риск-менеджмент — 19 лет в высоконагруженных финансовых системах.</p>
+        </div>
+        <div class="utp-card">
+          <div class="utp-icon">🤖</div>
+          <h3 data-i18n="utp3_title">AI-нативный аналитик</h3>
+          <p data-i18n="utp3_desc">LLM, RAG, MCP, function calling — применяю AI-инструменты для ускорения проектирования и разработки.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2 class="section-title" data-i18n="projects_title">Проекты</h2>
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-cat="all" data-i18n="filter_all">Все</button>
+        <button class="filter-btn" data-cat="AI / LLM">AI / LLM</button>
+        <button class="filter-btn" data-cat="Infrastructure" data-i18n="filter_infra">Инфраструктура</button>
+        <button class="filter-btn" data-cat="ML / Finance">ML / Finance</button>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience" id="experience">
+    <div class="container">
+      <h2 class="section-title" data-i18n="exp_title">Опыт работы</h2>
+      <div class="timeline" id="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">07.2024 — <span data-i18n="present">н.в.</span></div>
+          <div class="timeline-content">
+            <h3 data-i18n="exp1_role">ИП · Системный и бизнес-аналитик, Vibe-Developer</h3>
+            <p data-i18n="exp1_desc">Проектирование мультипровайдерной AI-архитектуры, FSM-конфигураторы, RAG-пайплайны, рефакторинг Python, REST API на Go, multi-stage Docker, архитектурная документация.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">04.2025 — 11.2025</div>
+          <div class="timeline-content">
+            <h3 data-i18n="exp2_role">Techcoredev.ru · Системный аналитик</h3>
+            <p data-i18n="exp2_desc">Система управления страховыми продуктами. Полный цикл спецификаций, BPMN/ERD/UML/C4, реверс-инжиниринг legacy с AI.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">04.2021 — 03.2024</div>
+          <div class="timeline-content">
+            <h3 data-i18n="exp3_role">Raccoonsoft & Devexperts · Ведущий аналитик</h3>
+            <p data-i18n="exp3_desc">Мобильная платформа Tastyworks iPad (tastytrade.com) — торговля акциями, деривативами, форекс и криптовалютами.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">12.2013 — 04.2025</div>
+          <div class="timeline-content">
+            <h3 data-i18n="exp4_role">ЛАНИТ-ТЕРКОМ · Ведущий аналитик</h3>
+            <p data-i18n="exp4_desc">ЖКХ ВЦКП-ЕИРЦ, МЭШ ДИТ Москвы, Газпром нефть, ЕМИАС, Toyota, AREA9 и другие крупные проекты.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">08.2007 — 05.2012</div>
+          <div class="timeline-content">
+            <h3 data-i18n="exp5_role">Devexperts.com · Бизнес/системный/финансовый аналитик</h3>
+            <p data-i18n="exp5_desc">ThinkOrSwim, GFT Dealbook 360, DXtrade — торговые платформы, FIX-интеграции, риск-менеджмент, бэк-офис.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <h2 class="section-title" data-i18n="skills_title">Технологии</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4 data-i18n="sk_lang">Языки</h4>
+          <div class="tags">
+            <span class="tag">Python 3.10+</span><span class="tag">Go 1.22</span><span class="tag">SQL</span><span class="tag">Bash</span><span class="tag">MQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>AI / LLM</h4>
+          <div class="tags">
+            <span class="tag">OpenAI API</span><span class="tag">Claude</span><span class="tag">Gemini</span><span class="tag">DeepSeek</span><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">MCP</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4 data-i18n="sk_frameworks">Фреймворки</h4>
+          <div class="tags">
+            <span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">aiogram 3</span><span class="tag">ChromaDB</span><span class="tag">Pydantic</span><span class="tag">WeasyPrint</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4 data-i18n="sk_data">Данные</h4>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span><span class="tag">SQLite</span><span class="tag">Oracle</span><span class="tag">MS SQL</span><span class="tag">pandas</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>ML</h4>
+          <div class="tags">
+            <span class="tag">scikit-learn</span><span class="tag">LightGBM</span><span class="tag">PyTorch</span><span class="tag">LSTM</span><span class="tag">optuna</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4 data-i18n="sk_infra">Инфраструктура</h4>
+          <div class="tags">
+            <span class="tag">Docker</span><span class="tag">Docker Compose</span><span class="tag">Grafana Loki</span><span class="tag">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="education">
+    <div class="container">
+      <h2 class="section-title" data-i18n="edu_title">Образование</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-year">1995–1998</div>
+          <div class="edu-body">
+            <h4 data-i18n="edu1_title">К.ф.-м.н., Математическая кибернетика</h4>
+            <p data-i18n="edu1_place">СПбГУ, аспирантура, факультет прикладной математики</p>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-year">1990–1995</div>
+          <div class="edu-body">
+            <h4 data-i18n="edu2_title">Математик, Прикладная математика</h4>
+            <p data-i18n="edu2_place">СПбГУ, факультет прикладной математики</p>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-year">1999–2002</div>
+          <div class="edu-body">
+            <h4 data-i18n="edu3_title">Экономист, Финансы и кредит</h4>
+            <p data-i18n="edu3_place">СПбГУ (экономический факультет) и МБИ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title" data-i18n="contact_title">Контакты</h2>
+      <div class="contact-links">
+        <a href="mailto:matvey_v@yahoo.com" class="contact-item">
+          <span class="contact-icon">✉️</span>
+          <span>matvey_v@yahoo.com</span>
+        </a>
+        <a href="https://t.me/matveivasetsov" target="_blank" class="contact-item">
+          <span class="contact-icon">💬</span>
+          <span>@matveivasetsov</span>
+        </a>
+        <a href="https://github.com/MatveiV" target="_blank" class="contact-item">
+          <span class="contact-icon">🐙</span>
+          <span>github.com/MatveiV</span>
+        </a>
+        <a href="https://www.linkedin.com/in/matvei-vasetsov-777b66a" target="_blank" class="contact-item">
+          <span class="contact-icon">💼</span>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+      <div class="contact-cv">
+        <a href="/download-cv" class="btn-primary" data-i18n="contact_cv">Скачать резюме PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Матвей Васецов</p>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
