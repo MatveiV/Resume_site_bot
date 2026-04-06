@@ -102,7 +102,7 @@ const i18n = {
   }
 };
 
-let currentLang = "ru";
+let currentLang = localStorage.getItem("lang") || "ru";
 let allProjects = [];
 
 function updateCvLinks() {
@@ -131,7 +131,9 @@ function applyLang(lang) {
 }
 
 document.getElementById("langToggle").addEventListener("click", () => {
-  applyLang(currentLang === "ru" ? "en" : "ru");
+  const next = currentLang === "ru" ? "en" : "ru";
+  localStorage.setItem("lang", next);
+  applyLang(next);
 });
 
 // ===== PROJECTS =====
@@ -140,7 +142,7 @@ let currentFilter = "all";
 async function loadProjects() {
   const res = await fetch("/api/projects");
   allProjects = await res.json();
-  renderProjects("all");
+  applyLang(currentLang); // apply correct language after data is ready
 }
 
 function renderProjects(cat) {
@@ -189,5 +191,3 @@ document.querySelectorAll(".utp-card, .edu-card, .skill-group, .timeline-item, .
 });
 
 loadProjects();
-// render initial achievements list in default language (ru)
-applyLang("ru");
