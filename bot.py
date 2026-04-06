@@ -1,23 +1,23 @@
 import asyncio
 import json
 import os
+import sys
 from datetime import datetime
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart, Command
 from aiogram.types import (
     Message, CallbackQuery,
-    InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile
+    InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile, BufferedInputFile
 )
 from dotenv import load_dotenv
+
+# reuse CV_DATA and build_cv_pdf from app.py
+sys.path.insert(0, os.path.dirname(__file__))
+from app import build_cv_pdf
 
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-CV_FILES = {
-    "ru": os.path.join("static", "cv", "MatveiVasetsov_CV_RU.pdf"),
-    "en": os.path.join("static", "cv", "MatveiVasetsov_CV_EN.pdf"),
-}
-CV_FALLBACK = os.path.join("static", "cv", "MatveiVasetsov_CV.pdf")
 PROJECTS_FILE = "projects.json"
 
 bot = Bot(token=BOT_TOKEN)
@@ -272,17 +272,6 @@ def format_projects(projects: list, category: str, lang: str) -> str:
     return "\n\n".join(lines) if lines else "—"
 
 
-def get_cv_file(uid: int) -> tuple[str, str]:
-    """Returns (filepath, filename) for current user language with timestamp."""
-    lang = get_lang(uid)
-    path = CV_FILES.get(lang, CV_FILES["ru"])
-    if not os.path.exists(path):
-        path = CV_FALLBACK
-    suffix = "RU" if lang == "ru" else "EN"
-    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-    return path, f"MatveiVasetsov_CV_{suffix}_{ts}.pdf"
-
-
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
     uid = message.from_user.id
@@ -359,15 +348,19 @@ async def cb_project_cat(call: CallbackQuery):
 @dp.callback_query(F.data == "cv")
 async def cb_cv(call: CallbackQuery):
     uid = call.from_user.id
-    cv_path, cv_filename = get_cv_file(uid)
-    if not os.path.exists(cv_path):
-        await call.answer(t(uid, "cv_not_found"), show_alert=True)
-        return
+    lang = get_lang(uid)
     await call.answer()
-    await call.message.answer_document(
-        FSInputFile(cv_path, filename=cv_filename),
-        caption=t(uid, "cv_caption"),
-    )
+    suffix = "RU" if lang == "ru" else "EN"
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"MatveiVasetsov_CV_{suffix}_{ts}.pdf"
+    try:
+        pdf_bytes = build_cv_pdf(lang)
+        await call.message.answer_document(
+            BufferedInputFile(pdf_bytes, filename=filename),
+            caption=t(uid, "cv_caption"),
+        )
+    except Exception as e:
+        await call.message.answer(f"⚠️ {t(uid, 'cv_not_found')}\n<code>{e}</code>", parse_mode="HTML")
 
 
 async def main():

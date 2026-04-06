@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', Arial, sans-serif; font-size: 10pt; color: #1d1d1f; line-height: 1.55; background: #fff; }
+  .page { padding: 28mm 20mm 20mm 20mm; }
+
+  /* HEADER */
+  .header { border-bottom: 2px solid #1d1d1f; padding-bottom: 10px; margin-bottom: 14px; }
+  .header h1 { font-size: 22pt; font-weight: 700; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 10pt; color: #555; margin-top: 3px; }
+  .header .contacts { margin-top: 6px; font-size: 9pt; color: #333; display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  .header .contacts a { color: #0066cc; text-decoration: none; }
+
+  /* SECTION */
+  .section { margin-bottom: 14px; }
+  .section-title { font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #1d1d1f; border-bottom: 1px solid #d2d2d7; padding-bottom: 3px; margin-bottom: 8px; }
+
+  /* SUMMARY */
+  .summary { font-size: 9.5pt; color: #333; }
+
+  /* EXPERIENCE */
+  .job { margin-bottom: 10px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: 600; font-size: 10pt; }
+  .job-date { font-size: 9pt; color: #555; white-space: nowrap; }
+  .job-company { font-size: 9.5pt; color: #0066cc; margin-bottom: 2px; }
+  .job-desc { font-size: 9pt; color: #333; margin-top: 3px; }
+  .job-achievements { font-size: 9pt; color: #333; margin-top: 4px; padding-left: 14px; }
+  .job-achievements li { margin-bottom: 2px; }
+  .job-tech { font-size: 8.5pt; color: #666; margin-top: 3px; font-style: italic; }
+
+  /* PROJECTS */
+  .project { margin-bottom: 7px; }
+  .project-title { font-weight: 600; font-size: 9.5pt; }
+  .project-title a { color: #0066cc; text-decoration: none; }
+  .project-desc { font-size: 9pt; color: #333; }
+  .project-tags { font-size: 8pt; color: #666; margin-top: 1px; }
+
+  /* SKILLS */
+  .skills-table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+  .skills-table td { padding: 2px 6px 2px 0; vertical-align: top; }
+  .skills-table td:first-child { font-weight: 600; white-space: nowrap; width: 120px; color: #333; }
+
+  /* EDUCATION */
+  .edu-item { margin-bottom: 6px; }
+  .edu-item .edu-header { display: flex; justify-content: space-between; }
+  .edu-item .edu-degree { font-weight: 600; font-size: 9.5pt; }
+  .edu-item .edu-year { font-size: 9pt; color: #555; }
+  .edu-item .edu-place { font-size: 9pt; color: #333; }
+
+  /* FOOTER */
+  .footer { margin-top: 16px; font-size: 8pt; color: #aaa; text-align: center; border-top: 1px solid #e5e5e5; padding-top: 6px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>{{ name }}</h1>
+    <div class="subtitle">{{ subtitle }}</div>
+    <div class="contacts">
+      <span>📧 <a href="mailto:matvey_v@yahoo.com">matvey_v@yahoo.com</a></span>
+      <span>📱 +7 921 900-86-18</span>
+      <span>✈️ <a href="https://t.me/matveivasetsov">@matveivasetsov</a></span>
+      <span>🐙 <a href="https://github.com/MatveiV">github.com/MatveiV</a></span>
+      <span>💼 <a href="https://www.linkedin.com/in/matvei-vasetsov-777b66a">LinkedIn</a></span>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <div class="section-title">{{ labels.summary }}</div>
+    <div class="summary">{{ summary }}</div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">{{ labels.experience }}</div>
+    {% for job in experience %}
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">{{ job.role }}</span>
+        <span class="job-date">{{ job.date }}</span>
+      </div>
+      <div class="job-company">{{ job.company }}</div>
+      <div class="job-desc">{{ job.desc }}</div>
+      {% if job.achievements %}
+      <ul class="job-achievements">
+        {% for a in job.achievements %}<li>{{ a }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if job.tech %}
+      <div class="job-tech">{{ labels.tech }}: {{ job.tech }}</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">{{ labels.projects }}</div>
+    {% for p in projects %}
+    <div class="project">
+      <div class="project-title">
+        <a href="{{ p.url }}">{{ p.title }}</a>
+      </div>
+      <div class="project-desc">{{ p.desc }}</div>
+      <div class="project-tags">{{ p.tags | join(' · ') }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">{{ labels.skills }}</div>
+    <table class="skills-table">
+      {% for row in skills %}
+      <tr><td>{{ row.category }}</td><td>{{ row.items }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">{{ labels.education }}</div>
+    {% for e in education %}
+    <div class="edu-item">
+      <div class="edu-header">
+        <span class="edu-degree">{{ e.degree }}</span>
+        <span class="edu-year">{{ e.years }}</span>
+      </div>
+      <div class="edu-place">{{ e.place }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="footer">{{ generated_at }}</div>
+</div>
+</body>
+</html>

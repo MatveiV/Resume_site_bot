@@ -18,6 +18,12 @@ const i18n = {
     exp_title: "Опыт работы", present: "н.в.",
     exp1_role: "ИП · Системный и бизнес-аналитик, Vibe-Developer",
     exp1_desc: "Проектирование мультипровайдерной AI-архитектуры, FSM-конфигураторы, RAG-пайплайны, рефакторинг Python, REST API на Go, multi-stage Docker, архитектурная документация. Разработка и бэктестинг алгоритмических стратегий. Создание MVP-приложений: Telegram-боты, парсеры, генераторы PDF, сайт-резюме.",
+    exp1_achievements: [
+      "Единая OpenAI-совместимая архитектура для 5 провайдеров без изменения кода бота",
+      "AI-агент с 11 инструментами: два UI (CLI + Telegram) на едином ядре без дублирования кода",
+      "Порт Flask→Go: ×20 RPS при образе 10 МБ vs 150 МБ",
+      "Пайплайн транскрипция→PDF с 3 типами отчётов и base64-встраиванием изображений",
+    ],
     exp2_role: "Techcoredev.ru · Системный аналитик",
     exp2_desc: "Система управления страховыми продуктами. Полный цикл спецификаций, BPMN/ERD/UML/C4, реверс-инжиниринг legacy с AI. Ускорил этап проектирования за счёт AI-генерации типовых фрагментов документации.",
     exp3_role: "Raccoonsoft & Devexperts · Ведущий аналитик",
@@ -62,6 +68,12 @@ const i18n = {
     exp_title: "Work Experience", present: "present",
     exp1_role: "Self-employed · Systems & Business Analyst, Vibe-Developer",
     exp1_desc: "Multi-provider AI architecture design, FSM configurators, RAG pipelines, Python refactoring, Go REST API, multi-stage Docker, architectural documentation. Research, development and backtesting of algorithmic trading strategies. Built MVP apps: Telegram bots, parsers, PDF generators, resume website.",
+    exp1_achievements: [
+      "Unified OpenAI-compatible architecture for 5 providers — no bot code changes when switching",
+      "AI agent with 11 tools: dual UI (CLI + Telegram) on a single core — zero code duplication",
+      "Flask→Go port: ×20 RPS at 10 MB image vs 150 MB",
+      "Transcript-to-PDF pipeline with 3 report types and base64 image embedding for cross-platform rendering",
+    ],
     exp2_role: "Techcoredev.ru · Systems Analyst",
     exp2_desc: "Insurance product management system. Full specification lifecycle, BPMN/ERD/UML/C4, AI-assisted legacy reverse engineering. Accelerated design phase by introducing AI for standard documentation fragments.",
     exp3_role: "Raccoonsoft & Devexperts · Lead Analyst",
@@ -106,6 +118,11 @@ function applyLang(lang) {
     const key = el.getAttribute("data-i18n");
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
+  // render achievements list separately (can't use data-i18n on <li>)
+  const ul = document.getElementById("exp1Achievements");
+  if (ul && t.exp1_achievements) {
+    ul.innerHTML = t.exp1_achievements.map(a => `<li>${a}</li>`).join("");
+  }
   document.title = t.page_title;
   document.getElementById("langToggle").textContent = lang === "ru" ? "EN" : "RU";
   document.documentElement.lang = lang;
@@ -172,3 +189,5 @@ document.querySelectorAll(".utp-card, .edu-card, .skill-group, .timeline-item, .
 });
 
 loadProjects();
+// render initial achievements list in default language (ru)
+applyLang("ru");
