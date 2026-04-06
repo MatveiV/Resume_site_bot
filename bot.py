@@ -11,9 +11,9 @@ from aiogram.types import (
 )
 from dotenv import load_dotenv
 
-# reuse CV_DATA and build_cv_pdf from app.py
+# reuse build_cv_pdf from cv_generator (no Flask app context needed)
 sys.path.insert(0, os.path.dirname(__file__))
-from app import build_cv_pdf
+from cv_generator import build_cv_pdf
 
 load_dotenv()
 
