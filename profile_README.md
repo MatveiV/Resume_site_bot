@@ -2,7 +2,7 @@
 
 **Системный и бизнес-аналитик · Vibe-кодер · Кандидат физико-математических наук**
 
-📧 matvey_v@yahoo.com · 📱 +7 921 900-86-18 · 💬 [@matveivasetsov](https://t.me/matveivasetsov)
+[![Yahoo](https://img.shields.io/badge/Yahoo-6001D2?style=flat&logo=yahoo&logoColor=white)](mailto:matvey_v@yahoo.com) matvey_v@yahoo.com &nbsp;·&nbsp; 📱 +7 921 900-86-18 &nbsp;·&nbsp; [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/matveivasetsov) [@matveivasetsov](https://t.me/matveivasetsov) &nbsp;·&nbsp; [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/MatveiV) [MatveiV](https://github.com/MatveiV) &nbsp;·&nbsp; [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matvei-vasetsov-777b66a)
 
 🇬🇧 [English version](README_EN.md)
 
@@ -24,20 +24,20 @@
 
 ### AI / LLM / Боты
 
-- **[MultiTools AI Agent Bot](https://github.com/MatveiV)** — Telegram-бот с 5 AI-провайдерами, 8 ролями, генерацией изображений/видео, памятью диалога и подсчётом стоимости в рублях. Документация: 8 Mermaid-диаграмм (C4, BPMN, UML).
-- **[ShortLongMemory Bots](https://github.com/MatveiV)** — Telegram-боты с короткой (deque) и долгой (RAG + ChromaDB) памятью. FSM-конфигуратор, 3 AI-провайдера, 16+ моделей.
-- **[Local AI Agent Bot](https://github.com/MatveiV)** — CLI и Telegram AI-агент с OpenAI function calling и 11 инструментами (поиск, погода, крипта, QR, PDF/DOCX, HTTP, терминал). 3 провайдера, 13+ моделей.
-- **[Product MCP Bot](https://github.com/MatveiV)** — MCP-сервер (FastAPI) + Telegram-бот с LLM tool calling. 10 инструментов: каталог товаров (SQLite), калькулятор, CoinGecko, RAWG, LibreTranslate.
-- **[AI Client PDF Generator](https://github.com/MatveiV)** — система автогенерации PDF-отчётов по транскрибациям диалогов с клиентами. LLM → структурированный JSON → Jinja2 → WeasyPrint. 5 LLM-провайдеров, 4 бэкенда генерации изображений.
-- **[LangChain Pipeline Generator](https://github.com/MatveiV)** — автогенерация Telegram-ботов и документации (SRS, URS) по текстовому описанию через LLM-цепочки.
-- **[Prompter](https://github.com/MatveiV)** — CLI для A/B-тестирования техник промптинга (zero-shot, few-shot, CoT, role-based) с ранжированием и генерацией Markdown/DOCX-отчётов.
-- **[PromptingAIbot & three_ai_comparison_bot](https://github.com/MatveiV)** — Telegram-бот и CLI для сравнения ответов AI-моделей (GPT, Claude, Gemini, DeepSeek, GLM) через единый OpenAI-совместимый клиент.
+- **[MultiTools AI Agent Bot](https://github.com/MatveiV/MultiTools_AI_Agent_Bot)** — Telegram-бот с 5 AI-провайдерами, 8 ролями, генерацией изображений/видео, памятью диалога и подсчётом стоимости в рублях. Документация: 8 Mermaid-диаграмм (C4, BPMN, UML).
+- **[ShortLongMemory Bots](https://github.com/MatveiV/ShortLongMemory_Bots)** — Telegram-боты с короткой (deque) и долгой (RAG + ChromaDB) памятью. FSM-конфигуратор, 3 AI-провайдера, 16+ моделей.
+- **[Local AI Agent Bot](https://github.com/MatveiV/Local_AI_Agent_Bot)** — CLI и Telegram AI-агент с OpenAI function calling и 11 инструментами (поиск, погода, крипта, QR, PDF/DOCX, HTTP, терминал). 3 провайдера, 13+ моделей.
+- **[Product MCP Bot](https://github.com/MatveiV/Product_MCP_Bot)** — MCP-сервер (FastAPI) + Telegram-бот с LLM tool calling. 10 инструментов: каталог товаров (SQLite), калькулятор, CoinGecko, RAWG, LibreTranslate.
+- **[AI Client PDF Generator](https://github.com/MatveiV/AI_Client_PDF_Generator)** — система автогенерации PDF-отчётов по транскрибациям диалогов с клиентами. LLM → структурированный JSON → Jinja2 → WeasyPrint. 5 LLM-провайдеров, 4 бэкенда генерации изображений.
+- **[LangChain Pipeline Generator](https://github.com/MatveiV/LangChain_Pipeline_Generator)** — автогенерация Telegram-ботов и документации (SRS, URS) по текстовому описанию через LLM-цепочки.
+- **[Prompter](https://github.com/MatveiV/Prompter)** — CLI для A/B-тестирования техник промптинга (zero-shot, few-shot, CoT, role-based) с ранжированием и генерацией Markdown/DOCX-отчётов.
+- **[PromptingAIbot & three_ai_comparison_bot](https://github.com/MatveiV/PromptingAIbot)** — Telegram-бот и CLI для сравнения ответов AI-моделей (GPT, Claude, Gemini, DeepSeek, GLM) через единый OpenAI-совместимый клиент.
 
 ### Инфраструктура и бэкенд
 
 - **[Refactoring_MV](https://github.com/MatveiV/Refactoring_mv)** — рефакторинг Python-кода (устранение SQL-инъекций, утечек соединений, гонок потоков, небезопасного хранения паролей) с параллельной реализацией того же REST API на Go. Два Docker-образа на Docker Hub, docker-compose для совместного запуска. Документация: 7 Mermaid-диаграмм (C4 L1/L2/L3, UML классов, Sequence ×3, State, Deployment).
-- **[Loki-Grafana](https://github.com/MatveiV)** — стек централизованного логирования (Loki + Grafana) с Docker Compose и bash-скриптами автоустановки.
-- **[CoinParser](https://github.com/MatveiV)** — парсер Telegram-канала с фильтрацией крипто-символов, интеграцией Google Sheets API и экспортом в XLSX.
+- **[Loki-Grafana](https://github.com/MatveiV/Loki_Grafana)** — стек централизованного логирования (Loki + Grafana) с Docker Compose и bash-скриптами автоустановки.
+- **[CoinParser](https://github.com/MatveiV/CoinParser)** — парсер Telegram-канала с фильтрацией крипто-символов, интеграцией Google Sheets API и экспортом в XLSX.
 
 ### ML / Финансы
 

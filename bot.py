@@ -12,13 +12,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-CV_FILE = os.path.join("static", "cv", "MatveiVasetsov_CV.pdf")
+CV_FILES = {
+    "ru": os.path.join("static", "cv", "MatveiVasetsov_CV_RU.pdf"),
+    "en": os.path.join("static", "cv", "MatveiVasetsov_CV_EN.pdf"),
+}
+CV_FALLBACK = os.path.join("static", "cv", "MatveiVasetsov_CV.pdf")
 PROJECTS_FILE = "projects.json"
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
-# ===== i18n =====
 TEXTS = {
     "ru": {
         "welcome": (
@@ -30,15 +33,13 @@ TEXTS = {
         "about": (
             "👤 <b>Матвей Евгеньевич Васецов</b>\n\n"
             "Аналитик с 19-летним опытом в FinTech. Специализируюсь на трансляции бизнес-требований "
-            "в архитектурные решения и MVP, проектировании высоконагруженных систем — торговых платформ "
-            "и расчётных систем.\n\n"
-            "💡 <i>Разработчики делают не то, а аналитика нет? Закрываю связку бизнес↔разработка: "
-            "собираю требования, проектирую архитектуру и автоматизирую рутину на Python — "
-            "вы экономите итерации и деньги.</i>\n\n"
-            "📧 matvey_v@yahoo.com\n"
-            "💬 @matveivasetsov\n"
-            "🐙 github.com/MatveiV\n"
-            "💼 linkedin.com/in/matvei-vasetsov-777b66a"
+            "в архитектурные решения и MVP, проектировании высоконагруженных систем.\n\n"
+            "💡 <i>Закрываю связку бизнес↔разработка: собираю требования, проектирую архитектуру "
+            "и автоматизирую рутину на Python — вы экономите итерации и деньги.</i>\n\n"
+            "📧 <a href='mailto:matvey_v@yahoo.com'>matvey_v@yahoo.com</a>  <i>(Yahoo)</i>\n"
+            "✈️ <a href='https://t.me/matveivasetsov'>@matveivasetsov</a>  <i>(Telegram)</i>\n"
+            "🐙 <a href='https://github.com/MatveiV'>github.com/MatveiV</a>  <i>(GitHub)</i>\n"
+            "💼 <a href='https://www.linkedin.com/in/matvei-vasetsov-777b66a'>LinkedIn</a>"
         ),
         "projects_header": "🚀 <b>Проекты</b>\n\nВыбери категорию:",
         "experience": (
@@ -73,14 +74,13 @@ TEXTS = {
         "education": (
             "🎓 <b>Образование</b>\n\n"
             "▸ <b>1995–1998</b> · СПбГУ, аспирантура\n"
-            "  К.ф.-м.н., Математическая кибернетика\n"
-            "  «Квазисовершенные принципы оптимальности в кооперативных играх»\n\n"
+            "  К.ф.-м.н., Математическая кибернетика\n\n"
             "▸ <b>1990–1995</b> · СПбГУ\n"
             "  Математик, Прикладная математика\n\n"
             "▸ <b>1999–2002</b> · СПбГУ + МБИ\n"
             "  Экономист, Финансы и кредит"
         ),
-        "cv_caption": "📄 Резюме Матвея Васецова",
+        "cv_caption": "📄 Резюме Матвея Васецова (RU)",
         "cv_not_found": "⚠️ Файл резюме не найден на сервере.",
         "lang_switched": "🇬🇧 Switched to English",
         "btn_about": "👤 Обо мне",
@@ -88,12 +88,13 @@ TEXTS = {
         "btn_experience": "💼 Опыт",
         "btn_skills": "🛠 Стек",
         "btn_education": "🎓 Образование",
-        "btn_cv": "📄 Скачать резюме",
+        "btn_cv": "📄 Скачать резюме (RU)",
         "btn_lang": "🇬🇧 English",
         "btn_back": "◀ Назад",
         "btn_ai": "🤖 AI / LLM",
         "btn_infra": "⚙️ Инфраструктура",
         "btn_ml": "📈 ML / Finance",
+        "proj_link_label": "🐙 GitHub",
     },
     "en": {
         "welcome": (
@@ -105,15 +106,13 @@ TEXTS = {
         "about": (
             "👤 <b>Matvei Evgenyevich Vasetsov</b>\n\n"
             "Analyst with 19 years of experience in FinTech. I specialise in translating business requirements "
-            "into architectural decisions and MVPs, and in designing high-load systems — trading platforms "
-            "and settlement engines.\n\n"
-            "💡 <i>Developers building the wrong thing and no analyst in sight? I bridge the business↔engineering gap: "
-            "gather requirements, design architecture, and automate routine work in Python — "
-            "saving you iterations and money.</i>\n\n"
-            "📧 matvey_v@yahoo.com\n"
-            "💬 @matveivasetsov\n"
-            "🐙 github.com/MatveiV\n"
-            "💼 linkedin.com/in/matvei-vasetsov-777b66a"
+            "into architectural decisions and MVPs, and in designing high-load systems.\n\n"
+            "💡 <i>I bridge the business↔engineering gap: gather requirements, design architecture, "
+            "and automate routine work in Python — saving you iterations and money.</i>\n\n"
+            "📧 <a href='mailto:matvey_v@yahoo.com'>matvey_v@yahoo.com</a>  <i>(Yahoo)</i>\n"
+            "✈️ <a href='https://t.me/matveivasetsov'>@matveivasetsov</a>  <i>(Telegram)</i>\n"
+            "🐙 <a href='https://github.com/MatveiV'>github.com/MatveiV</a>  <i>(GitHub)</i>\n"
+            "💼 <a href='https://www.linkedin.com/in/matvei-vasetsov-777b66a'>LinkedIn</a>"
         ),
         "projects_header": "🚀 <b>Projects</b>\n\nChoose a category:",
         "experience": (
@@ -148,14 +147,13 @@ TEXTS = {
         "education": (
             "🎓 <b>Education</b>\n\n"
             "▸ <b>1995–1998</b> · Saint Petersburg State University, Postgraduate\n"
-            "  PhD in Mathematics (Mathematical Cybernetics)\n"
-            "  «Quasi-perfect Optimality Principles in Cooperative Games»\n\n"
+            "  PhD in Mathematics (Mathematical Cybernetics)\n\n"
             "▸ <b>1990–1995</b> · Saint Petersburg State University\n"
             "  MSc, Applied Mathematics\n\n"
             "▸ <b>1999–2002</b> · SPbSU + International Banking Institute\n"
             "  Economist, Finance and Credit"
         ),
-        "cv_caption": "📄 Matvei Vasetsov's Resume",
+        "cv_caption": "📄 Matvei Vasetsov's Resume (EN)",
         "cv_not_found": "⚠️ CV file not found on the server.",
         "lang_switched": "🇷🇺 Переключено на русский",
         "btn_about": "👤 About Me",
@@ -163,30 +161,29 @@ TEXTS = {
         "btn_experience": "💼 Experience",
         "btn_skills": "🛠 Stack",
         "btn_education": "🎓 Education",
-        "btn_cv": "📄 Download CV",
+        "btn_cv": "📄 Download CV (EN)",
         "btn_lang": "🇷🇺 Русский",
         "btn_back": "◀ Back",
         "btn_ai": "🤖 AI / LLM",
         "btn_infra": "⚙️ Infrastructure",
         "btn_ml": "📈 ML / Finance",
+        "proj_link_label": "🐙 GitHub",
     }
 }
 
-# user_id -> lang
 user_lang: dict[int, str] = {}
 
 
-def get_lang(user_id: int) -> str:
-    return user_lang.get(user_id, "ru")
+def get_lang(uid: int) -> str:
+    return user_lang.get(uid, "ru")
 
 
-def t(user_id: int, key: str) -> str:
-    return TEXTS[get_lang(user_id)][key]
+def t(uid: int, key: str) -> str:
+    return TEXTS[get_lang(uid)][key]
 
 
-def main_kb(user_id: int) -> InlineKeyboardMarkup:
-    lang = get_lang(user_id)
-    tx = TEXTS[lang]
+def main_kb(uid: int) -> InlineKeyboardMarkup:
+    tx = TEXTS[get_lang(uid)]
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text=tx["btn_about"], callback_data="about"),
          InlineKeyboardButton(text=tx["btn_projects"], callback_data="projects")],
@@ -198,15 +195,14 @@ def main_kb(user_id: int) -> InlineKeyboardMarkup:
     ])
 
 
-def back_kb(user_id: int) -> InlineKeyboardMarkup:
+def back_kb(uid: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=t(user_id, "btn_back"), callback_data="back")]
+        [InlineKeyboardButton(text=t(uid, "btn_back"), callback_data="back")]
     ])
 
 
-def projects_kb(user_id: int) -> InlineKeyboardMarkup:
-    lang = get_lang(user_id)
-    tx = TEXTS[lang]
+def projects_kb(uid: int) -> InlineKeyboardMarkup:
+    tx = TEXTS[get_lang(uid)]
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text=tx["btn_ai"], callback_data="proj_ai")],
         [InlineKeyboardButton(text=tx["btn_infra"], callback_data="proj_infra")],
@@ -221,11 +217,7 @@ def load_projects() -> list:
 
 
 def format_projects(projects: list, category: str, lang: str) -> str:
-    cat_map = {
-        "ai": "AI / LLM",
-        "infra": "Infrastructure",
-        "ml": "ML / Finance",
-    }
+    cat_map = {"ai": "AI / LLM", "infra": "Infrastructure", "ml": "ML / Finance"}
     cat = cat_map.get(category, "")
     filtered = [p for p in projects if p["category"] == cat]
     lines = []
@@ -233,8 +225,23 @@ def format_projects(projects: list, category: str, lang: str) -> str:
         title = p["title_ru"] if lang == "ru" else p["title_en"]
         desc = p["desc_ru"] if lang == "ru" else p["desc_en"]
         tags = " · ".join(p["tags"][:4])
-        lines.append(f"▸ <b>{title}</b>\n  {desc}\n  <i>{tags}</i>\n  🔗 {p['url']}")
+        lines.append(
+            f"▸ <b>{title}</b>\n"
+            f"  {desc}\n"
+            f"  <i>{tags}</i>\n"
+            f"  🐙 <a href='{p['url']}'>{p['url'].replace('https://github.com/', '')}</a>"
+        )
     return "\n\n".join(lines) if lines else "—"
+
+
+def get_cv_file(uid: int) -> tuple[str, str]:
+    """Returns (filepath, filename) for current user language."""
+    lang = get_lang(uid)
+    path = CV_FILES.get(lang, CV_FILES["ru"])
+    if not os.path.exists(path):
+        path = CV_FALLBACK
+    suffix = "RU" if lang == "ru" else "EN"
+    return path, f"MatveiVasetsov_CV_{suffix}.pdf"
 
 
 @dp.message(CommandStart())
@@ -267,7 +274,10 @@ async def cb_lang(call: CallbackQuery):
 @dp.callback_query(F.data == "about")
 async def cb_about(call: CallbackQuery):
     uid = call.from_user.id
-    await call.message.edit_text(t(uid, "about"), reply_markup=back_kb(uid), parse_mode="HTML")
+    await call.message.edit_text(
+        t(uid, "about"), reply_markup=back_kb(uid),
+        parse_mode="HTML", disable_web_page_preview=True
+    )
 
 
 @dp.callback_query(F.data == "experience")
@@ -301,18 +311,22 @@ async def cb_project_cat(call: CallbackQuery):
     lang = get_lang(uid)
     projects = load_projects()
     text = format_projects(projects, cat, lang)
-    await call.message.edit_text(text, reply_markup=back_kb(uid), parse_mode="HTML")
+    await call.message.edit_text(
+        text, reply_markup=back_kb(uid),
+        parse_mode="HTML", disable_web_page_preview=True
+    )
 
 
 @dp.callback_query(F.data == "cv")
 async def cb_cv(call: CallbackQuery):
     uid = call.from_user.id
-    if not os.path.exists(CV_FILE):
+    cv_path, cv_filename = get_cv_file(uid)
+    if not os.path.exists(cv_path):
         await call.answer(t(uid, "cv_not_found"), show_alert=True)
         return
     await call.answer()
     await call.message.answer_document(
-        FSInputFile(CV_FILE, filename="MatveiVasetsov_CV.pdf"),
+        FSInputFile(cv_path, filename=cv_filename),
         caption=t(uid, "cv_caption"),
     )
 

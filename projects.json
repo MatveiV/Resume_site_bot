@@ -7,7 +7,7 @@
     "desc_en": "Telegram bot with 5 AI providers, 8 roles, image/video generation, dialogue memory, and cost tracking in RUB. Docs: 8 Mermaid diagrams (C4, BPMN, UML).",
     "tags": ["Python", "aiogram", "LLM", "OpenAI", "Claude", "Gemini"],
     "category": "AI / LLM",
-    "url": "https://github.com/MatveiV"
+    "url": "https://github.com/MatveiV/MultiTools_AI_Agent_Bot"
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "desc_en": "Telegram bots with short-term (deque) and long-term (RAG + ChromaDB) memory. FSM configurator, 3 AI providers, 16+ models.",
     "tags": ["Python", "RAG", "ChromaDB", "FSM", "aiogram"],
     "category": "AI / LLM",
-    "url": "https://github.com/MatveiV"
+    "url": "https://github.com/MatveiV/ShortLongMemory_Bots"
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "desc_en": "CLI and Telegram AI agent with OpenAI function calling and 11 tools (search, weather, crypto, QR, PDF/DOCX, HTTP, terminal). 3 providers, 13+ models.",
     "tags": ["Python", "Function Calling", "CLI", "Telegram", "OpenAI"],
     "category": "AI / LLM",
-    "url": "https://github.com/MatveiV"
+    "url": "https://github.com/MatveiV/Local_AI_Agent_Bot"
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "desc_en": "MCP server (FastAPI) + Telegram bot with LLM tool calling. 10 tools: product catalogue (SQLite), calculator, CoinGecko, RAWG, LibreTranslate.",
     "tags": ["FastAPI", "MCP", "SQLite", "LLM", "Python"],
     "category": "AI / LLM",
-    "url": "https://github.com/MatveiV"
+    "url": "https://github.com/MatveiV/Product_MCP_Bot"
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
     "desc_en": "Automated PDF report generation from client dialogue transcriptions. LLM → structured JSON → Jinja2 → WeasyPrint. 5 LLM providers, 4 image-generation backends.",
     "tags": ["Python", "WeasyPrint", "Jinja2", "LLM", "PDF"],
     "category": "AI / LLM",
-    "url": "https://github.com/MatveiV"
+    "url": "https://github.com/MatveiV/AI_Client_PDF_Generator"
   },
   {
     "id": 6,
@@ -57,10 +57,20 @@
     "desc_en": "Auto-generation of Telegram bots and documentation (SRS, URS) from a text description via LLM chains.",
     "tags": ["LangChain", "Python", "LLM", "Code Generation"],
     "category": "AI / LLM",
-    "url": "https://github.com/MatveiV"
+    "url": "https://github.com/MatveiV/LangChain_Pipeline_Generator"
   },
   {
     "id": 7,
+    "title_ru": "Prompter",
+    "title_en": "Prompter",
+    "desc_ru": "CLI для A/B-тестирования техник промптинга (zero-shot, few-shot, CoT, role-based) с ранжированием и генерацией Markdown/DOCX-отчётов.",
+    "desc_en": "CLI for A/B testing of prompting techniques (zero-shot, few-shot, CoT, role-based) with ranking and Markdown/DOCX report generation.",
+    "tags": ["Python", "CLI", "Prompting", "LLM", "A/B Testing"],
+    "category": "AI / LLM",
+    "url": "https://github.com/MatveiV/Prompter"
+  },
+  {
+    "id": 8,
     "title_ru": "Refactoring_MV",
     "title_en": "Refactoring_MV",
     "desc_ru": "Рефакторинг Python-кода (SQL-инъекции, утечки соединений, гонки потоков) с параллельной реализацией REST API на Go. Два Docker-образа, docker-compose. 7 Mermaid-диаграмм.",
@@ -70,27 +80,27 @@
     "url": "https://github.com/MatveiV/Refactoring_mv"
   },
   {
-    "id": 8,
+    "id": 9,
     "title_ru": "Loki-Grafana Stack",
     "title_en": "Loki-Grafana Stack",
     "desc_ru": "Стек централизованного логирования (Loki + Grafana) с Docker Compose и bash-скриптами автоустановки.",
     "desc_en": "Centralised logging stack (Loki + Grafana) with Docker Compose and automated bash install scripts.",
     "tags": ["Docker", "Grafana", "Loki", "DevOps", "Bash"],
     "category": "Infrastructure",
-    "url": "https://github.com/MatveiV"
+    "url": "https://github.com/MatveiV/Loki_Grafana"
   },
   {
-    "id": 9,
+    "id": 10,
     "title_ru": "CoinParser",
     "title_en": "CoinParser",
     "desc_ru": "Парсер Telegram-канала с фильтрацией крипто-символов, интеграцией Google Sheets API и экспортом в XLSX.",
     "desc_en": "Telegram channel parser with crypto-symbol filtering, Google Sheets API integration, and XLSX export.",
     "tags": ["Python", "Telegram", "Google Sheets", "Crypto", "Parser"],
     "category": "Infrastructure",
-    "url": "https://github.com/MatveiV"
+    "url": "https://github.com/MatveiV/CoinParser"
   },
   {
-    "id": 10,
+    "id": 11,
     "title_ru": "ML_Fin_Notebooks",
     "title_en": "ML_Fin_Notebooks",
     "desc_ru": "ML в финансах: бэктестинг стратегий, генерация признаков (EMA, RSI, MACD), классификация, прогнозирование временных рядов (LSTM, TFT).",
